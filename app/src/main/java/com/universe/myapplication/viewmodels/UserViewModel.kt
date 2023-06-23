@@ -13,22 +13,19 @@ import com.universe.myapplication.database.UserDao
 import com.universe.myapplication.models.User
 import kotlinx.coroutines.launch
 
-
-  class UserViewModel(application: Application) : AndroidViewModel(application) {
+class UserViewModel(application: Application) : AndroidViewModel(application) {
     private val dataBase: MyAppDatabase
-    private val userDao:UserDao
+    private val userDao: UserDao
 
-init {
-    dataBase= MyAppDatabase.getDatabase(application)
-    userDao=dataBase.userDao()
-}
+    init {
+        dataBase = MyAppDatabase.getDatabase(application)
+        userDao = dataBase.userDao()
+    }
+
     val user: LiveData<User> = userDao.getUser()
-
-
     val firstName = MutableLiveData<String>()
     val lastName = MutableLiveData<String>()
     val phoneNumber = MutableLiveData<String>()
-    val visibility = MutableLiveData<Boolean>(false)
 
     fun saveUser() {
         val firstNameValue = firstName.value
@@ -36,7 +33,11 @@ init {
         val phoneNumberValue = phoneNumber.value
 
         if (!firstNameValue.isNullOrEmpty() && !lastNameValue.isNullOrEmpty() && !phoneNumberValue.isNullOrEmpty()) {
-            val user = User(firstName = firstNameValue, lastName = lastNameValue, phoneNumber = phoneNumberValue)
+            val user = User(
+                firstName = firstNameValue,
+                lastName = lastNameValue,
+                phoneNumber = phoneNumberValue
+            )
             viewModelScope.launch {
                 dataBase.withTransaction {
                     userDao.deleteAll()
@@ -46,6 +47,7 @@ init {
             }
         }
     }
+
     var textWatcher: TextWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             // This method is called before the text is changed
