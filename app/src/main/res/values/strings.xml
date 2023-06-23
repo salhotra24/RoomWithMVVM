@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="phone_no">Enter Phone No</string>
+    <string name="last_name">Enter Last Name</string>
+    <string name="first_name">Enter First Name</string>
+    <string name="heading_mainsreen">Room Data Binding\nFor Activity with Mvvm</string>
+</resources>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.universe.myapplication.viewmodels.UserViewModel" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/heading_mainsreen"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/design_default_color_primary"
+            android:gravity="center" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/user_fname"
+            android:hint="@string/first_name"
+            android:text="@={viewModel.firstName}"
+            android:padding="12dp"
+            android:addTextChangedListener="@{viewModel.textWatcher}"
+            android:layout_marginTop="16dp"
+            android:background="@android:drawable/editbox_background" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/user_lname"
+            android:text="@={viewModel.lastName}"
+            android:hint="@string/last_name"
+            android:padding="12dp"
+            android:addTextChangedListener="@{viewModel.textWatcher}"
+            android:layout_marginTop="16dp"
+            android:background="@android:drawable/editbox_background" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/phone_no"
+            android:text="@={viewModel.phoneNumber}"
+            android:hint="@string/phone_no"
+            android:addTextChangedListener="@{viewModel.textWatcher}"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:drawable/editbox_background" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/masterlayout"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="First Name:"
+
+                    android:textSize="18sp"
+                    android:layout_weight=".5"
+                    android:textStyle="bold"
+                    android:gravity="left"
+                    android:layout_marginTop="8dp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.user.firstName}"
+                    android:id="@+id/firstname"
+
+                    android:layout_weight="1.5"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingStart="5dp"
+                    android:gravity="left"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Last Name:"
+
+                    android:textSize="18sp"
+                    android:layout_weight=".5"
+                    android:textStyle="bold"
+                    android:gravity="left"
+                    android:layout_marginTop="8dp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.user.lastName}"
+                    android:id="@+id/lastname"
+                    android:paddingStart="5dp"
+                    android:layout_weight="1.5"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Phone:"
+
+                    android:textSize="18sp"
+                    android:layout_weight=".5"
+                    android:textStyle="bold"
+                    android:gravity="left"
+                    android:layout_marginTop="8dp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.user.phoneNumber}"
+                    android:id="@+id/phoneno"
+                    android:layout_weight="1.5"
+                    android:paddingStart="5dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+</layout>
